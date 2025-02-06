@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,16 +22,23 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware('auth','role:estudiante')->group(function(){
-    Route::get('estudiante',function(){
-        return "estudiante";
-    });
-});
+// Route::middleware('auth','role:estudiante')->group(function(){
+//     Route::get('/estudiante',function(){return "estudiante";
+//     Route::get('/subjects',[SubjectController::class,'index'])->name('subjects.index');
+//     Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects.store');
+//     });
+// });
 
 Route::middleware('auth','role:docente')->group(function(){
-    Route::get('docente',function(){return "docente";});
+    Route::get('/docente',function(){return "docente";});
     Route::get('/notes',[NoteController::class,'index'])->name('notes.index');
     Route::post('/notes', [NoteController::class, 'store'])->name('notes.store');
+});
+
+Route::middleware('auth','role:estudiante')->group(function(){
+    Route::get('/estudiante',function(){return "docente";});
+    Route::get('/subjects',[SubjectController::class,'index'])->name('subjects.index');
+    Route::post('/subjects', [NoteController::class, 'store'])->name('subjects.store');
 });
 
 
