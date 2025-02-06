@@ -36,9 +36,9 @@ Route::middleware('auth','role:docente')->group(function(){
 });
 
 Route::middleware('auth','role:estudiante')->group(function(){
-    Route::get('/estudiante',function(){return "docente";});
+    Route::get('/estudiante',function(){return "estudiante";});
     Route::get('/subjects',[SubjectController::class,'index'])->name('subjects.index');
-    Route::post('/subjects', [NoteController::class, 'store'])->name('subjects.store');
+    Route::post('/subjects', [SubjectController::class, 'store'])->name('subjects.store');
 });
 
 

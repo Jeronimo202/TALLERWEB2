@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('notesid')->nullable();
             $table->foreign('notesid')->references('id')->on('notes');
+            $table->timestamps();
         });
     }
 

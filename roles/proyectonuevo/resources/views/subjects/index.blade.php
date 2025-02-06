@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-9">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   
   <title>MATERIAS</title>
   
@@ -72,15 +72,7 @@
                             <td>{{ $subject->notesid}}</td>
                            
                             
-                            <td>
-                                <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-warning">Editar</a>
-                                <form action="{{ route('subjects.destroy', $subject->id) }}" method="post"
-                                    style="display: inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                </form>
-                            </td>
+                           
                         </tr>
                     @endforeach
                 </tbody>
